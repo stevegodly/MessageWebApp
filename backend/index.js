@@ -9,7 +9,6 @@ const app=express()
 const router=require('./routes/chats')
 const Message=require('./models/message')
 
-require("./bin/www");
 
 require('dotenv').config()
 const jwtSecret=process.env.SECRET;
