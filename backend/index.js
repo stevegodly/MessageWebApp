@@ -118,3 +118,4 @@ const start = async () => {
 
 start();
 
+modeule.exports=app
