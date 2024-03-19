@@ -1,6 +1,6 @@
 import {useEffect,useContext,useState} from "react";
 import {UserContext} from '../components/UserContext'
-import Loading from '../components/loading'
+import Loading from '../components/Loading'
 import axios from "axios";
 import { useSnackbar } from 'notistack';
 
