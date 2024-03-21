@@ -20,7 +20,7 @@ export default function Chat() {
     },[selectedUserId])
 
     const connectToWs=()=>{
-        const ws=new WebSocket('ws://localhost:5000');
+        const ws=new WebSocket('ws://messagewebapp.onrender.com');
         
         setWs(ws)
         ws.addEventListener('message', handleMessage);
@@ -54,7 +54,7 @@ export default function Chat() {
     
 
     function logout() {
-        axios.post('http://localhost:5000/api/v1/chats/logout').then(() => {
+        axios.post('https://messagewebapp.onrender.com/api/v1/chats/logout').then(() => {
           setWs(null);
           setId(null);
           setUsername(null);
@@ -73,7 +73,7 @@ export default function Chat() {
         }
         ws.send(JSON.stringify(data));
         if(file){
-            axios.get(`http://localhost:5000/api/v1/chats/${selectedUserId}`).then(res => {
+            axios.get(`https://messagewebapp.onrender.com/api/v1/chats/${selectedUserId}`).then(res => {
                 setMessages(res.data);
             });
         }
@@ -100,7 +100,7 @@ export default function Chat() {
 
     
   useEffect(() => {
-    axios.get('http://localhost:5000/api/v1/chats/people').then(res => {
+    axios.get('https://messagewebapp.onrender.com/api/v1/chats/people').then(res => {
       const offlinePeopleArr = res.data
         .filter(p => p._id !== id)
         .filter(p => !Object.keys(onlinePeople).includes(p._id));
@@ -115,7 +115,7 @@ export default function Chat() {
   useEffect(() => {
     if (selectedUserId) {
       console.log(typeof selectedUserId)
-      axios.get(`http://localhost:5000/api/v1/chats/${selectedUserId}`).then(res => {
+      axios.get(`https://messagewebapp.onrender.com/api/v1/chats/${selectedUserId}`).then(res => {
         setMessages(res.data);
         console.log({message:messages})
       });
@@ -179,7 +179,7 @@ export default function Chat() {
                       {message.text}
                       {message.file && (
                         <div className="">
-                          <a target="_blank" className="flex items-center gap-1 border-b" href={'http://localhost:5000/api/v1/chats/ /uploads/' + message.file}>
+                          <a target="_blank" className="flex items-center gap-1 border-b" href={'https://messagewebapp.onrender.com/api/v1/chats/ /uploads/' + message.file}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                               <path fillRule="evenodd" d="M18.97 3.659a2.25 2.25 0 00-3.182 0l-10.94 10.94a3.75 3.75 0 105.304 5.303l7.693-7.693a.75.75 0 011.06 1.06l-7.693 7.693a5.25 5.25 0 11-7.424-7.424l10.939-10.94a3.75 3.75 0 115.303 5.304L9.097 18.835l-.008.008-.007.007-.002.002-.003.002A2.25 2.25 0 015.91 15.66l7.81-7.81a.75.75 0 011.061 1.06l-7.81 7.81a.75.75 0 001.054 1.068L18.97 6.84a2.25 2.25 0 000-3.182z" clipRule="evenodd" />
                             </svg>

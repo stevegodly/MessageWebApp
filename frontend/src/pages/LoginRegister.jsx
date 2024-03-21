@@ -26,7 +26,7 @@ const LoginRegister=()=>{
                 password:password,
             }
             const url = (registerLogin === 'register' ? 'register' : 'login');
-            const {data}=await axios.post(`http://localhost:5000/api/v1/chats/${url}`,user)
+            const {data}=await axios.post(`https://messagewebapp.onrender.com//api/v1/chats/${url}`,user)
             setLoggedInUsername(username);
             setId(data.id);
             enqueueSnackbar(`${url}ed successfully`, { variant: 'success' });
