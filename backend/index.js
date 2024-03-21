@@ -23,7 +23,7 @@ const server=app.listen(port, () =>
 )
 
 app.use(cors({
-  origin:'message-web-app-7iwo.vercel.app',
+  origin:'https://message-web-app-7iwo.vercel.app',
   methods:['GET','POST','PATCH','DELETE'],
   allowedHeaders:['Content-Type'],    
   credentials:true,
