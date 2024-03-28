@@ -4,6 +4,7 @@ import Logo from "../components/Logo";
 import {UserContext} from "../components/UserContext"
 import {uniqBy} from "lodash";
 import axios from "axios";
+import bgi from '../../public/bgi.jpg'
 
 export default function Chat() {
     const [ws,setWs] = useState(null);
@@ -128,7 +129,7 @@ export default function Chat() {
   const messagesWithoutDupes = uniqBy(messages, '_id');
 
   return(
-    <div className="flex h-screen">
+    <div className="flex h-screen" style={{ backgroundImage:`url(${bgi.src})`}}>
       <div className="bg-white w-1/3 flex flex-col">
         <div className="flex-grow">
           <Logo />
